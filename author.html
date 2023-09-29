@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Author Information
+    </title>
+</head>
+
+<body>
+
+    <h2>Author entry Shivaram Reddy Palla</h2>
+
+    <form>
+        <label for="secretAuthor">The hidden author name </label>
+        <input type="password" id="secretAuthor" name="secretAuthor" value="Dickens"> <br>
+
+        <label for="guessAuthor">Guess the author </label>
+        <input type="text" id="guessAuthor" name="guessAuthor" autofocus> <br>
+
+        <input type="button" onclick="checkAuthor()" value="Check the guess">
+    </form>
+
+
+    <p id="result"></p>
+
+    <script>
+        let good = 0;
+        let oops = 0;
+
+        function checkAuthor() {
+            console.log("Getting form values")
+            author = document.getElementById("secretAuthor").value
+            guessAuthor = document.getElementById("guessAuthor").value
+            out = document.getElementById("result")
+            if (author == guessAuthor) {
+                good = good + 1
+                alert("You got it right")
+            }
+            else {
+                oops = oops + 1;
+                alert("Sorry");
+            }
+            updateResults();
+        }
+        function updateResults() {
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `Results: Good: ${good}, Oops: ${oops}`;
+        }
+    </script>
+
+</body>
+
+</html>

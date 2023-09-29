@@ -5,28 +5,19 @@
         Author Information
     </title>
 </head>
-
 <body>
-
     <h2>Author entry Shivaram Reddy Palla</h2>
-
     <form>
         <label for="secretAuthor">The hidden author name </label>
         <input type="password" id="secretAuthor" name="secretAuthor" value="Dickens"> <br>
-
         <label for="guessAuthor">Guess the author </label>
         <input type="text" id="guessAuthor" name="guessAuthor" autofocus> <br>
-
         <input type="button" onclick="checkAuthor()" value="Check the guess">
     </form>
-
-
     <p id="result"></p>
-
     <script>
         let good = 0;
         let oops = 0;
-
         function checkAuthor() {
             console.log("Getting form values")
             author = document.getElementById("secretAuthor").value

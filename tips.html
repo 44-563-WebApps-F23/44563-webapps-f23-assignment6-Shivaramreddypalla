@@ -35,12 +35,12 @@
 
      <div>
      <input type="radio" id="difference" name="operation" value="difference" onclick="chooseOp()"> 
-     <label for="difference">Difference</label><br>
+     <label for="difference">Diff</label><br>
      </div><br>
 
      <div class>
      <input type="radio" id="product" name="operation" value="product" onclick="chooseOp()">
-     <label for="product">Product</label><br>
+     <label for="product">mult</label><br>
      </div><br>
  
  </form>
@@ -69,11 +69,11 @@
 function chooseOp() {
         let baseAmount = parseFloat(document.getElementById("baseAmount").value);
         let tipPercent = parseFloat(document.getElementById("tipPercent").value);
-        let selecterOperation = document.querySelector('input[name="operation"]:checked').value;
+        let selectedOperation = document.querySelector('input[name="operation"]:checked').value;
 
         let resultText = "";
 
-        switch (selecterOperation) {
+        switch (selectedOperation) {
             case "sum":
                 resultText = "Sum of " + baseAmount + " and " + tipPercent + " is " + (baseAmount + tipPercent);
                 break;

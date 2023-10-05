@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cruise Selection</title>
+</head>
+
+<body>
+
+    <h2>Shivaram Reddy Palla goes on a cruise</h2>
+
+    <form>
+        <div class="form-group">
+            <label for="cabin">Shares Cabin</label>
+            <input type="checkbox" id="cabin" value="True"> <br>
+
+            <label for="Breakfast">Breakfast</label>
+            <input type="checkbox" id="Breakfast" value="True"> <br>
+
+            <label for="Pass"> Pool Pass</label>
+            <input type="checkbox" id="Pass" value="False">
+        </div><br>
+    </form>
+
+    <button onclick="selectCruise()">Select a Cruise</button>
+
+    <p id="cruiseInfo"></p>
+
+    <script>
+
+        let myCruise = {};
+
+        function selectCruise() {
+            myCruise = {};
+            myCruise.shared = document.getElementById('cabin').checked;
+            myCruise.breakfast = document.getElementById('Breakfast').checked;
+            myCruise.pool = document.getElementById('Pass').checked
+
+            document.getElementById('cruiseInfo').innerHTML ="Selected Cruise Details: " + JSON.stringify(myCruise);
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tips Page</title>
+    </head>
+ 
+<body>
+
+<h2>Shivaram Reddy Palla shows tip amounts</h2>
+
+<form>
+    <div>
+    <label for="baseAmount">Enter base amount </label>
+    <input type="number" id="baseAmount" name="baseAmount" value="50"><br>
+    </div><br>
+    
+    <div class>
+    <label for="tipPercent">Enter the tip percent </label>
+    <input type="number" id="tipPercent" name="tipPercent" value="15"><br><br>
+
+     <input type="button" onclick="tips()" value="Show tip"><br>
+     </div>
+     
+</form>
+<p id="tipsResults"> </p>
+
+<div>
+    <form>
+     <div>
+     <label for="operation"><h4>Choose Operation: </h4></label>
+
+     <input type="radio" id="sum" name="operation" value="sum" onclick="chooseOp()"> 
+     <label for="sum">Sum</label><br>
+     </div><br>
+
+     <div>
+     <input type="radio" id="difference" name="operation" value="difference" onclick="chooseOp()"> 
+     <label for="difference">Difference</label><br>
+     </div><br>
+
+     <div class>
+     <input type="radio" id="product" name="operation" value="product" onclick="chooseOp()">
+     <label for="product">Product</label><br>
+     </div><br>
+ 
+ </form>
+ 
+ <p id="calculationResult"></p>
+
+
+<script> 
+
+  function tips() {
+    let baseAmount = parseFloat(document.getElementById("baseAmount").value);
+    let tipPercent = parseFloat(document.getElementById("tipPercent").value);
+    let myOutput = "";
+
+    for (let i = 0; i < 5; i++) {
+        
+        let calculatedTip = (baseAmount * (tipPercent + i * 4)) / 100;
+        myOutput += (tipPercent+i*4)+ "% is  $" + calculatedTip.toFixed(2) + "; "+"\n";
+        
+    }
+
+    let tipResultsElement = document.getElementById("tipsResults");
+    tipResultsElement.innerHTML = "Tips are: " + myOutput;
+}
+
+function chooseOp() {
+        let baseAmount = parseFloat(document.getElementById("baseAmount").value);
+        let tipPercent = parseFloat(document.getElementById("tipPercent").value);
+        let selecterOperation = document.querySelector('input[name="operation"]:checked').value;
+
+        let resultText = "";
+
+        switch (selecterOperation) {
+            case "sum":
+                resultText = "Sum of " + baseAmount + " and " + tipPercent + " is " + (baseAmount + tipPercent);
+                break;
+            case "difference":
+                resultText = "Difference between " + baseAmount + " and " + tipPercent + " is " + (baseAmount - tipPercent);
+                break;
+            case "product":
+                resultText = "Product of " + baseAmount + " and " + tipPercent + " is " + (baseAmount * tipPercent);
+                break;
+            default:
+                resultText = "Select an operation";
+        }
+
+        var calculationResultElement = document.getElementById("calculationResult");
+        calculationResultElement.innerHTML = resultText;
+    }
+
+</script>
+
+</body>
+</html> 

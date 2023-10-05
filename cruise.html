@@ -9,34 +9,67 @@
 
     <h2>Shivaram Reddy Palla goes on a cruise</h2>
 
-    <form>
+    <div class="form-group">
+        <form>
+            <div>
+                <label for="cabin">Shares Cabin</label>
+                <input type="checkbox" id="cabin" value="True"><br>
+
+                <label for="breakfast">Breakfast</label>
+                <input type="checkbox" id="breakfast" value="True"><br>
+
+                <label for="pool">Pool Pass</label>
+                <input type="checkbox" id="pool" value="False"><br><br>
+
+                <input type="button" onclick="selectCruise()" value="Select a cruise"><br>
+            </div>
+        </form>
+    </div>
+
+    <p id="cruiseResult"></p><br>
+
         <div class="form-group">
-            <label for="cabin">Shares Cabin</label>
-            <input type="checkbox" id="cabin" value="True"> <br>
+            <form>
+                <div>
+                    <label for="days">Enter the number of days</label>
+                    <input type="text" id="days" value="7"><br><br>
+             
+                    <label for="price">Enter price</label>
+                    <input type="text" id="price"><br><br>
 
-            <label for="Breakfast">Breakfast</label>
-            <input type="checkbox" id="Breakfast" value="True"> <br>
+                    <input type="button" onclick="updateCruise()" value="Update the Cruise"><br>
+                </div>
+            </form>
+        </div>
 
-            <label for="Pass"> Pool Pass</label>
-            <input type="checkbox" id="Pass" value="False">
-        </div><br>
-    </form>
-
-    <button onclick="selectCruise()">Select a Cruise</button>
-
-    <p id="cruiseInfo"></p>
-
+        <p id="updatecruise"></p>
+    </div>
     <script>
-
-        let myCruise = {};
+        let my_cruise = {};
 
         function selectCruise() {
-            myCruise = {};
-            myCruise.shared = document.getElementById('cabin').checked;
-            myCruise.breakfast = document.getElementById('Breakfast').checked;
-            myCruise.pool = document.getElementById('Pass').checked
 
-            document.getElementById('cruiseInfo').innerHTML ="Selected Cruise Details: " + JSON.stringify(myCruise);
+            my_cruise = {};
+            let cabinCb = document.getElementById("cabin");
+            let breakfastCb = document.getElementById("breakfast");
+            let poolCb = document.getElementById("pool");
+
+            my_cruise.Shares_Cabin = cabinCb.checked;
+            my_cruise.Breakfast = breakfastCb.checked;
+            my_cruise.Pool_Pass = poolCb.checked;
+
+            let cruiseResultElement = document.getElementById("cruiseResult");
+            cruiseResultElement.innerHTML = "Selected Cruise Details: " + JSON.stringify(my_cruise);
+        }
+        function updateCruise() {
+            let days = document.getElementById("days").value;
+            let price = document.getElementById("price").value;
+
+            my_cruise.Days = days;
+            my_cruise.Price = price;
+
+            let cruiseResultElement = document.getElementById("updatecruise");
+            cruiseResultElement.innerHTML = "Updated Cruise Details: " + JSON.stringify(my_cruise);
         }
 
     </script>
